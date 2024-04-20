@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "main.html#data-import",
+    "href": "main.html#data-import",
+    "title": "Maximizing Electric Car Value",
+    "section": "Data Import",
+    "text": "Data Import\nThe data is imported from a CSV file using the read_csv function from the tidyverse package.\n\nlibrary(tidyverse)\n\nev_sales &lt;- read_csv(paste(\"path\", \"to\", \"dataset.csv\", sep = \"/\"))"
+  },
+  {
+    "objectID": "main.html#characteristics-of-the-dataset",
+    "href": "main.html#characteristics-of-the-dataset",
+    "title": "Maximizing Electric Car Value",
+    "section": "Characteristics of the dataset",
+    "text": "Characteristics of the dataset\nIt contains aggregated historical values for electrical cars including sales and sales share information for various aspects combined in individual rows.\nThe dataset has the following columns:\n\n\n[1] \"region\"     \"category\"   \"parameter\"  \"mode\"       \"powertrain\"\n[6] \"year\"       \"unit\"       \"value\"     \n\n\nThe columns have syntactic names which suit the following operations on the dataset without the need of correcting them."
+  },
+  {
+    "objectID": "main.html#data-transformation",
+    "href": "main.html#data-transformation",
+    "title": "Maximizing Electric Car Value",
+    "section": "Data Transformation",
+    "text": "Data Transformation\nSimply importing this dataset into R would result in character and numerical variables. However, there are categorical variables with a well-defined set of possible values: region, category, parameter, mode, powertrain, unit.\nThese variables can be converted into a more suitable type called factor with the following mutation operation.\n\nev_sales &lt;- ev_sales |&gt;\n    mutate(region = factor(region),\n        category = factor(category),\n        parameter = factor(parameter),\n        mode = factor(mode),\n        powertrain = factor(powertrain),\n        unit = factor(unit))"
+  },
+  {
+    "objectID": "main.html#data-filtering",
+    "href": "main.html#data-filtering",
+    "title": "Maximizing Electric Car Value",
+    "section": "Data Filtering",
+    "text": "Data Filtering\nSince the dataset contains multiple regions around the world and aspects of sales, we need to filter for the data related to the US and sales share as follows.\n\nus_sales_share &lt;- ev_sales |&gt;\n    filter(region == \"USA\" & parameter == \"EV sales share\")"
+  },
+  {
+    "objectID": "main.html#data-visualization",
+    "href": "main.html#data-visualization",
+    "title": "Maximizing Electric Car Value",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\n\n\n\n\n\n\n\n\nTo achieve the above graph, I used ggplot from the ggplot2 package with the layers of geom_point and geom_line.\n\nggplot(us_sale_share, aes(x = year, y = value)) +\n    geom_point(col = \"orange\", size = 2.5) +\n    geom_line(col = \"orange\")\n\nAs the mapping argument of ggplot shows above, the abscissa is set to the scale of year and the ordinate is to the value of sales share in percent.\nScales of the axes have been set up to show 1-step breaks. To indicate that the y-axis is expressed in percent, I used the label_percent function from the package scales with a scale of 1 as follows:\n\nlibrary(scales)\n\nggplot(...) +\n    ... +\n    scale_x_continuous(breaks = seq(2010, 2022)) +\n    scale_y_continuous(breaks = seq(0, 8), labels = label_percent(scale = 1))\n\nFinally, to give a simple appearance to the visual, I enabled a classic theme.\n\nggplot(...) +\n    ... +\n    theme_classic()"
+  },
+  {
+    "objectID": "main.html#data-import-1",
+    "href": "main.html#data-import-1",
+    "title": "Maximizing Electric Car Value",
+    "section": "Data Import",
+    "text": "Data Import\nThe data is imported from a CSV file just like before.\n\nlibrary(tidyverse)\n\ndollars_per_mile &lt;- read_csv(paste(\"path\", \"to\", \"dataset.csv\", sep = \"/\"))"
+  },
+  {
+    "objectID": "main.html#characteristics-of-the-dataset-1",
+    "href": "main.html#characteristics-of-the-dataset-1",
+    "title": "Maximizing Electric Car Value",
+    "section": "Characteristics of the dataset",
+    "text": "Characteristics of the dataset\nIt contains historical median values of dollars per mile of range for different types of vehicles. The last column, however, contains the lowest EV price / miles indicator.\nThe dataset has the following columns:\n\n\n[1] \"Year\"                                 \n[2] \"Gasoline vehicles\"                    \n[3] \"Electric vehicles (excluding Tesla)\"  \n[4] \"Tesla\"                                \n[5] \"Electric vehicles (lowest MSRP/range)\"\n\n\nMost of the columns contain space character, that is, they have non-syntactic name, however, no column requires to be transformed into a factor variable."
+  },
+  {
+    "objectID": "main.html#data-transformation-1",
+    "href": "main.html#data-transformation-1",
+    "title": "Maximizing Electric Car Value",
+    "section": "Data Transformation",
+    "text": "Data Transformation\nTo make it convenient to work with the dataset, the column names shall be transformed.\nThere are multiple ways to transform column names into syntactic ones. One approach uses an automatic transformation with the help of janitor::clean_names(), while the other one is a manual approach with the rename function.\n\nlibrary(janitor)\n\ndollars_per_mile |&gt;\n    janitor::clean_names()\n\n\n\n[1] \"year\"                                \"gasoline_vehicles\"                  \n[3] \"electric_vehicles_excluding_tesla\"   \"tesla\"                              \n[5] \"electric_vehicles_lowest_msrp_range\"\n\n\nSince the above column names seem to be too long, I have decided to go with the manual approach.\n\ndollars_per_mile &lt;- dollars_per_mile |&gt;\n    rename(\n        year = \"Year\",\n        gasoline = \"Gasoline vehicles\",\n        ev_no_tesla = \"Electric vehicles (excluding Tesla)\",\n        ev_tesla = \"Tesla\",\n        ev_lowest = \"Electric vehicles (lowest MSRP/range)\"\n    )\n\n\n\n[1] \"year\"        \"gasoline\"    \"ev_no_tesla\" \"ev_tesla\"    \"ev_lowest\""
+  },
+  {
+    "objectID": "main.html#data-filtering-1",
+    "href": "main.html#data-filtering-1",
+    "title": "Maximizing Electric Car Value",
+    "section": "Data Filtering",
+    "text": "Data Filtering\nSince the data of different vehicle types are separated by columns not rows, there is no need for filtering. When the types are needed to be separated, the geom layer shall use the appropriate variable in its mapping."
+  },
+  {
+    "objectID": "main.html#data-visualization-1",
+    "href": "main.html#data-visualization-1",
+    "title": "Maximizing Electric Car Value",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\n\n\n\n\n\n\n\n\nTo achieve the above plot, I used pairs of layers of geom_point and geom_line for all the four indicators as follows.\n\nggplot(dollars_per_mile, aes(x = year)) +\n    # Gasoline\n    geom_point(aes(y = gasoline, col = \"1\")) +\n    geom_line(aes(y = gasoline, col = \"1\")) +\n    # EV non-Tesla\n    geom_point(aes(y = ev_no_tesla, col = \"2\")) +\n    geom_line(aes(y = ev_no_tesla, col = \"2\")) +\n    # EV Tesla\n    geom_point(aes(y = ev_tesla, col = \"3\")) +\n    geom_line(aes(y = ev_tesla, col = \"3\")) +\n    # Lowest EV indicator\n    geom_point(aes(y = ev_lowest, col = \"4\")) +\n    geom_line(aes(y = ev_lowest, col = \"4\"))\n\nThe abscissa is set to the scale of year and the ordinate is to the dollars per mile. Since the variable on the x scale is universal for all the layers, I specified it in the mapping of ggplot itself and extended the mapping with the appropriate y variable specification in case of each different indicator.\nScales of the axes have been set up to show 1 and 50-step breaks for x and y, respectively.\n\nggplot(...) +\n    ... +\n    scale_x_continuous(breaks = seq(2012, 2021)) +\n    scale_y_continuous(breaks = seq(0, 600, by = 50), limits = c(0, 600))\n\nTo highlight the layers with different colors, I specified the color mapping attribute of each geom_point and geom_line with an ordered sequence and then based on that I specified the colors manually. Also, a readable label has been added to each of these colored groups.\n\nggplot(...) +\n    ...\n    geom_point(aes(..., col = \"1\")) +\n    geom_line(aes(..., col = \"1\")) +\n    ... +\n    scale_color_manual(\n        values = c(\"black\", \"skyblue2\", \"red3\", \"seagreen\"),\n        labels = c(\"Gasoline\", \"Non-Tesla EV\", \"Tesla (EV)\", \"Lowest EV\")\n    )\n\nFinally, to give a simple appearance to the visual, I enabled a classic theme as I did in the case of the previous case."
+  }
+]
