@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -112,8 +132,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="main.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#preamble" id="toc-preamble" class="nav-link active" data-scroll-target="#preamble">Preamble</a></li>
+  <li><a href="#report-overview" id="toc-report-overview" class="nav-link" data-scroll-target="#report-overview">Report Overview</a></li>
+  <li><a href="#sales-trend-in-the-us" id="toc-sales-trend-in-the-us" class="nav-link" data-scroll-target="#sales-trend-in-the-us">Sales Trend in the US</a></li>
+  <li><a href="#retail-price-per-mile-trend-in-the-us" id="toc-retail-price-per-mile-trend-in-the-us" class="nav-link" data-scroll-target="#retail-price-per-mile-trend-in-the-us">Retail Price per Mile trend in the US</a></li>
+  <li><a href="#exploring-drivers-of-retail-price" id="toc-exploring-drivers-of-retail-price" class="nav-link" data-scroll-target="#exploring-drivers-of-retail-price">Exploring drivers of Retail Price</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="main.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -144,6 +175,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div style="page-break-after: always;"></div>
+<section id="preamble" class="level1">
+<h1>Preamble</h1>
+<p>This brief case study aims to provide insights on Electric Vehicles sales and retail price. The study was inspired and guided by a course on <em>Brilliant</em> <span class="citation" data-cites="brllnt-cs-std"><a href="#ref-brllnt-cs-std" role="doc-biblioref">[1]</a></span>. After completing it on the learning platform, I decided to single-handedly recreate the report using <code>R</code> language.</p>
+<p>While for the first two insights, I could get direct access to the datasource that was used in the course, for the subsequent insights, the underlying data was an aggregated one from various sources. The first two insights, therefore focus on importing, transforming, and visualizing the available dataset. For the subsequent ones, however, hard copies of plots and graphs had been provided and the focus has been shifted from processing the data to interpreting characteristics and statistics of it in more details.</p>
+<div style="page-break-after: always;"></div>
+</section>
 <section id="report-overview" class="level1">
 <h1>Report Overview</h1>
 <div id="fig-overview" class="quarto-layout-panel">
@@ -169,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <img src="main_files/figure-html/fig-overview-2.png" class="img-fluid figure-img" data-ref-parent="fig-overview" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-overview-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) <strong>How did retail price per mile of range change over this period?</strong> The indicator for gasoline cars remained steady. While there is still a gap in between EVs and non-EVs, it has decreased substantially over the displyed period.
+(b) <strong>How did retail price per mile of range change over this period?</strong> The indicator for gasoline cars remained steady. While there is still a gap in between EVs and non-EVs, it has decreased substantially over the displayed period.
 </figcaption>
 </figure>
 </div>
@@ -181,11 +218,21 @@ Figure&nbsp;1
 </figcaption>
 </figure>
 </div>
-<!-- 
-::: {layout-ncol="2"}
-![...](./images/ev-subpopulation.png)
-:::
- -->
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/ev-subpopulation.png" class="img-fluid figure-img"></p>
+<figcaption>…</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </section>
 <section id="sales-trend-in-the-us" class="level1">
@@ -387,8 +434,242 @@ Figure&nbsp;1
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, to give a simple appearance to the visual, I enabled a classic theme as I did in the case of the previous case.</p>
-<!-- \newpage
-{{< include ./contents/ev-subpopulations.qmd >}} -->
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="exploring-drivers-of-retail-price" class="level1">
+<h1>Exploring drivers of Retail Price</h1>
+<p>According to the previous insight, the price gap between gasoline and EV cars are closing.</p>
+<p><strong>Question:</strong> What characteristics of EVs determine their price?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The following data plots and related statistics in this section are from the datasource of the case-study of Brilliant.</p>
+</div>
+</div>
+<p>One could assume that for an EV, <strong>battery capacity</strong> and <strong>range</strong> characteristics are main drivers of <strong>retail price</strong>. To determine if there is a relationship between these variables, one could take a look at their <em>correlation</em>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Correlation <strong>only</strong> indicates how strong the <strong>linear relationship</strong> (if there is any) is between the observed variables.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>              Retail price correlation
+EPA Range                        -0.10
+Battery (kWh)                    -0.07</code></pre>
+</div>
+</div>
+<p>Both of the above correlations show weak or no relationship with <em>retail price</em>. Moreover, they are both negative.</p>
+<p><em>How could it be that neither battery nor range seems to drive retail price and the little correlation coefficient they have is even negative?</em></p>
+<p>To find the answer for the question, it is advisable to take a look at these two variables plotted with <em>retail price</em>.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-expl-drvrs-1-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-expl-drvrs-1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/range-vs-price.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expl-drvrs-1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Plotted data of <em>range</em> and <em>retail price</em>. <span class="citation" data-cites="brllnt-explrng-crrltns"><a href="#ref-brllnt-explrng-crrltns" role="doc-biblioref">[2]</a></span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-expl-drvrs-1-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-expl-drvrs-1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/battery-vs-price.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expl-drvrs-1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Plotted data of <em>battery</em> and <em>retail price</em>. <span class="citation" data-cites="brllnt-explrng-crrltns"><a href="#ref-brllnt-explrng-crrltns" role="doc-biblioref">[2]</a></span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>In the plots of <a href="#fig-expl-drvrs-1-1" class="quarto-xref">Figure&nbsp;2</a> and <a href="#fig-expl-drvrs-1-2" class="quarto-xref">Figure&nbsp;3</a>, the data points are scattered around with two characteristics:</p>
+<ul>
+<li>there are data <strong>clusterings</strong> with gaps between them</li>
+<li>most of the data are clustered in a rectangular-ish shape, that is, there is low if any covariance between the plotted variables</li>
+<li>there are a few but extreme <strong>outliers</strong></li>
+</ul>
+<p>These characteristics might indicate the following:</p>
+<ul>
+<li>intermingled <strong>sub-populations</strong> in the dataset</li>
+<li>the absence of covariance resulting in the <strong>absence of correlation</strong> presented above</li>
+</ul>
+<p>Taking a look at one of these oddly scattered characteristics in more details, the <strong>battery capacity</strong>, its histogram in <a href="#fig-expl-drvrs-2-1" class="quarto-xref">Figure&nbsp;4</a> further cements the idea that grouping takes place in between the data points. It seems that the dataset conveys data points related to <strong>sub-populations</strong> based on battery capacity.</p>
+<p>It turns out the dataset can be indeed divided into two distinct parts: <strong>BEVs</strong> (Battery EV) and <strong>PHEVs</strong> (Plug-in Hybrid EV). PHEVs have smaller battery capacity than BEVs. This is depicted in <a href="#fig-expl-drvrs-2-2" class="quarto-xref">Figure&nbsp;5</a>.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-expl-drvrs-2-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-expl-drvrs-2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/battery-histogram.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expl-drvrs-2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Histogram of <em>battery capacity</em> of EVs. <span class="citation" data-cites="brllnt-explrng-sbppltns"><a href="#ref-brllnt-explrng-sbppltns" role="doc-biblioref">[3]</a></span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-expl-drvrs-2-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-expl-drvrs-2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/ev-subpopulation.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expl-drvrs-2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Boxplots of the two distinct sub-populations. <span class="citation" data-cites="brllnt-explrng-sbppltns"><a href="#ref-brllnt-explrng-sbppltns" role="doc-biblioref">[3]</a></span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>It is expected that separating the dataset by the above aspect would result in a stronger correlation.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                   Retail price correlation Coefficient of determination
+BEV EPA Range                        0.6400                       0.4096
+BEV Battery (kWh)                    0.6600                       0.4356
+PHEV EPA Range                      -0.4400                       0.1936
+PHEV Battery (kWh)                  -0.3300                       0.1089</code></pre>
+</div>
+</div>
+<p>In case of BEVs, the correlation makes much more sense. It appears that battery capacity has a moderate relationship with retail price with a <strong>correlation coefficient</strong> of <strong>0.66</strong> and a <strong>coefficient of determination</strong> of <strong>44%</strong>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Overview definition of <strong>coefficient of determination</strong>. Refine my thoughts.</p>
+</div>
+</div>
+<p>However, in the case of PHEVs, the correlation values are still negative. Moreover, being closer to -1, they now show stronger yet still weak sign of a linear relationship between the data points. In this case the <strong>correlation coefficient</strong> and the <strong>coefficient of determination</strong> are <strong>-0.33</strong> and <strong>11%</strong>, respectively.</p>
+<p>Taking a look at the scatter plot could help once again.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-expl-drvrs-3-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-expl-drvrs-3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/battery-vs-price-bev.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expl-drvrs-3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Plotted data of <em>battery</em> and <em>retail price</em> of BEVs. <span class="citation" data-cites="brllnt-bevs"><a href="#ref-brllnt-bevs" role="doc-biblioref">[4]</a></span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-expl-drvrs-3-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-expl-drvrs-3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/battery-vs-price-phev.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expl-drvrs-3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Plotted data of <em>battery</em> and <em>retail price</em> of PHEVs. <span class="citation" data-cites="brllnt-phevs"><a href="#ref-brllnt-phevs" role="doc-biblioref">[5]</a></span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The scatter plot shows that there are extreme expensive PHEVs with a relatively low-capacity battery. As the battery capacity increases there is a negative trend in these expensive outliers, however, where the data is clustered within the lower parts of the ordinate we might find the answer we are looking for.</p>
+<p>Deleting the outliers with expensive retail price, and looking only at the remaining data points might show some trend.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The source highlights that deleting outliers is not a common task and could lead to fault in predictions, however, in this case, the outliers are high-end luxury cars that we decided to ignore this time.</p>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-expl-drvrs-4-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-expl-drvrs-4-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/battery-vs-price-phev-wo-outliers.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expl-drvrs-4-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Plotted data of <em>battery</em> and <em>retail price</em> of PHEVs without outliers. <span class="citation" data-cites="brllnt-phevs"><a href="#ref-brllnt-phevs" role="doc-biblioref">[5]</a></span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div id="fig-expl-drvrs-4-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-expl-drvrs-4-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="main_files/figure-html/fig-expl-drvrs-4-2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-expl-drvrs-4-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: PHEVs without expensive outliers. As the correlation coefficient has already indicated, the data points weakly ‘hug’ the best-fit line.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>As the left plot above depicts, ignoring outliers and keeping the limits of the scales unchanged, the data points seem to follow a trend. However, once we move the data points into zoom, as in the right plot, our opinion changes instantly. The <em>correlation</em> and <em>coefficient of determination</em> are the following:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                   Retail price correlation Coefficient of determination
+PHEV Battery (kWh)                   0.3400                       0.1156</code></pre>
+</div>
+</div>
+<p>It appears, unlike BEVs, the battery capacity - even when outliers are ignored - is still not a strong indicator of PHEVs retail price in terms of a linear relationship.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="references" class="level1">
+
 <!-- 
 
 ::: {.cell layout-ncol="2"}
@@ -404,10 +685,26 @@ Figure&nbsp;1
  -->
 
 
-</section>
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-brllnt-cs-std" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><span>“Case study: Maximizing electric car value,”</span> <em>Brilliant</em>. Available: <a href="https://brilliant.org/courses/capstone-pricing-electric-vehicles">https://brilliant.org/courses/capstone-pricing-electric-vehicles</a></div>
+</div>
+<div id="ref-brllnt-explrng-crrltns" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><span>“Exploring EV correlations, case study: Maximizing electric car value,”</span> <em>Brilliant</em>. Available: <a href="https://brilliant.org/courses/capstone-pricing-electric-vehicles">https://brilliant.org/courses/capstone-pricing-electric-vehicles</a></div>
+</div>
+<div id="ref-brllnt-explrng-sbppltns" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline"><span>“Exploring data subpopulations, case study: Maximizing electric car value,”</span> <em>Brilliant</em>. Available: <a href="https://brilliant.org/courses/capstone-pricing-electric-vehicles">https://brilliant.org/courses/capstone-pricing-electric-vehicles</a></div>
+</div>
+<div id="ref-brllnt-bevs" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline"><span>“Battery electric vehicles, case study: Maximizing electric car value,”</span> <em>Brilliant</em>. Available: <a href="https://brilliant.org/courses/capstone-pricing-electric-vehicles">https://brilliant.org/courses/capstone-pricing-electric-vehicles</a></div>
+</div>
+<div id="ref-brllnt-phevs" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline"><span>“Plug-in hybrid electric vehicles, case study: Maximizing electric car value,”</span> <em>Brilliant</em>. Available: <a href="https://brilliant.org/courses/capstone-pricing-electric-vehicles">https://brilliant.org/courses/capstone-pricing-electric-vehicles</a></div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
